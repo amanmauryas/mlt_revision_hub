@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Week-wise Machine Learning Techniques revision hub.">
+<title>MLT Revision Hub</title>
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/app.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="./"><span class="brand-mark">∑</span><span>MLT <span class="muted">Revision Hub</span></span></a><a class="header-link" href="README.md">Setup guide ↗</a></header>
+<main class="container">
+<section class="hero"><p class="eyebrow">YOUR PERSONAL STUDY LIBRARY</p><h1>One week at a time. <span class="accent">One question at a time.</span></h1><p class="hero-copy">Browse MLT like a course: weeks are chapters, topics are sections, and every section contains Activity Questions, Practice Assignments, Graded Assignments, and PYQs.</p>
+<div class="stats"><div class="stat"><span class="stat-number" id="total-count">—</span><span class="stat-label">questions</span></div><div class="stat"><span class="stat-number" id="done-count">0</span><span class="stat-label">marked revised</span></div><div class="stat"><span class="stat-number" id="progress-percent">0%</span><span class="stat-label">revision progress</span></div></div><div class="progress-track" aria-label="Revision progress"><div id="progress-fill" class="progress-fill"></div></div>
+</section>
+<section class="toolbar" aria-label="Search and filters"><label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search weeks, topics, questions, tags…" autocomplete="off"></label>
+<select id="week-filter" aria-label="Filter by week"><option value="all">All weeks</option></select><select id="topic-filter" aria-label="Filter by topic"><option value="all">All topics</option></select>
+<select id="category-filter" aria-label="Filter by question category"><option value="all">All categories</option><option value="AQ">AQ · Activity Question</option><option value="PA">PA · Practice Assignment</option><option value="GA">GA · Graded Assignment</option><option value="PYQ">PYQ · Previous Year Question</option></select>
+<select id="status-filter" aria-label="Filter by revision status"><option value="all">All progress</option><option value="todo">Not revised</option><option value="done">Revised</option></select></section>
+<section class="section-heading"><div><p class="eyebrow">COURSE CONTENT</p><h2>Weeks & chapters</h2><p class="muted small">Expand a week, then a topic, to find its questions. Empty topics are ready for your next upload.</p></div><span id="results-count" class="muted small"></span></section>
+<section id="week-list" class="week-list" aria-live="polite"></section>
+<div id="empty-state" class="empty-state hidden"><div class="empty-icon">⌕</div><h3>No questions found</h3><p>Try another search or clear the filters.</p><button id="clear-filters" class="button secondary">Clear filters</button></div>
+<section class="practice-panel"><div><p class="eyebrow">QUICK RECALL</p><h2>One-minute check</h2><p class="muted">A quick question from the first example.</p></div><div class="recall-question"><p>There are 1,000 images, each 100 × 100 pixels, with 4 bytes per pixel. What is the approximate dataset size?</p><div class="recall-options" id="recall-options"><button class="option" data-answer="400 KB">400 KB</button><button class="option" data-answer="4 MB">4 MB</button><button class="option" data-answer="40 MB">40 MB</button><button class="option" data-answer="400 MB">400 MB</button></div><p id="recall-feedback" class="feedback" aria-live="polite">Choose an answer to check yourself.</p></div></section>
+<footer><span>Built for deliberate revision, not passive rereading.</span><span>Progress is saved in this browser.</span></footer>
+</main>
+</body></html>
