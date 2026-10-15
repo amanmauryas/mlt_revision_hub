@@ -10,5 +10,17 @@
     "category":"PA",
     "week":0,
     "weekTitle":"Foundations & Unassigned"
+  },
+  {
+    "id":"line-data-compression",
+    "title":"Compressing points that lie on a line",
+    "topic":"Dimensionality reduction",
+    "difficulty":"Foundational",
+    "summary":"Compare 300 coordinate values with 100 scalar coefficients plus one shared 3D unit vector; includes an animated graphical representation.",
+    "tags":["PCA","dimensionality reduction","storage","linear subspace","coefficients"],
+    "url":"questions/line-data-compression.html",
+    "category":"AQ",
+    "week":1,
+    "weekTitle":"PCA — Principal Component Analysis"
   }
 ]
