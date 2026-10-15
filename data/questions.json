@@ -19,7 +19,7 @@
     "summary":"Compare 300 coordinate values with 100 scalar coefficients plus one shared 3D unit vector; includes an animated graphical representation.",
     "tags":["PCA","dimensionality reduction","storage","linear subspace","coefficients"],
     "url":"questions/line-data-compression.html",
-    "category":"AQ",
+    "category":"PA",
     "week":1,
     "weekTitle":"PCA — Principal Component Analysis"
   }
