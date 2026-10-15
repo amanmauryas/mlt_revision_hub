@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QUESTION TITLE · MLT Revision Hub</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../"><span class="brand-mark">∑</span><span>MLT <span class="muted">Revision Hub</span></span></a><a class="header-link" href="../">← All weeks</a></header>
+<main class="container question-page">
+<div class="breadcrumb"><a href="../">Revision Hub</a> / WEEK / TOPIC</div>
+<section class="question-hero"><p class="eyebrow">CATEGORY · AQ / PA / GA / PYQ</p><h1>QUESTION TITLE</h1><p>One-sentence summary of the skill or concept tested.</p><div class="tag-row"><span class="tag">TOPIC</span><span class="tag">DIFFICULTY</span></div></section>
+<section class="article-card"><h2>Question</h2><p>Paste the complete question here. Include any assumptions, diagrams, or data needed to solve it.</p><button class="button" id="hint-button">Show hint</button><div id="hint" class="reveal"><p><strong>Hint:</strong> give a small nudge without revealing the full solution.</p></div></section>
+<section class="article-card"><h2>Your attempt</h2><p>Work through the question before revealing the solution.</p><textarea style="width:100%;min-height:110px;padding:12px;border:1px solid var(--line);border-radius:10px" placeholder="Write your reasoning here…"></textarea><button class="button" id="solution-button">Reveal solution</button></section>
+<section id="solution" class="article-card reveal"><h2>Step-by-step solution</h2><p>Explain the reasoning, show equations, and justify each important step.</p><div class="equation">\[\text{Insert equation here}\]</div></section>
+<section class="article-card"><h2>Why tempting approaches fail</h2><ul><li>Misconception or tempting wrong method 1, and why it fails.</li><li>Misconception or tempting wrong method 2, and why it fails.</li></ul><h2>Exam traps</h2><p>List assumptions, edge cases, units, or wording that can change the answer.</p><h2>Practice variation</h2><p>Write a modified question to test transfer instead of memorization.</p><label class="check-row"><input type="checkbox" id="revised"> Mark this question as revised</label></section>
+<footer><span>MLT Revision Hub · Individual question</span><a class="text-link" href="../">Back to course weeks ↗</a></footer>
+</main>
+<script>
+(function(){const $=id=>document.getElementById(id);$("hint-button").addEventListener("click",()=>$("hint").classList.toggle("visible"));$("solution-button").addEventListener("click",()=>$("solution").classList.toggle("visible"));const id="replace-with-question-id",key="mlt-revision-hub-progress-v1";let p={};try{p=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}$("revised").checked=!!p[id];$("revised").addEventListener("change",()=>{if($("revised").checked)p[id]=true;else delete p[id];try{localStorage.setItem(key,JSON.stringify(p))}catch(e){}})})();
+</script>
+</body></html>
