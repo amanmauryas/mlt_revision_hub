@@ -1,0 +1,14 @@
+[
+  {
+    "id":"pixel-memory",
+    "title":"How much memory does an image dataset occupy?",
+    "topic":"Data representation",
+    "difficulty":"Foundational",
+    "summary":"Calculate dataset storage from image count, dimensions, and bytes per pixel. Includes an adjustable calculator and exam traps.",
+    "tags":["pixels","memory","bytes","calculation","foundations"],
+    "url":"questions/pixel-memory.html",
+    "category":"PA",
+    "week":0,
+    "weekTitle":"Foundations & Unassigned"
+  }
+]
