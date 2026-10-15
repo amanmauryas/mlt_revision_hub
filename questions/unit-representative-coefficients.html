@@ -4,6 +4,28 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Unit Representative and Point Coefficients · MLT Revision Hub</title>
 <link rel="stylesheet" href="../assets/style.css">
+<style>
+/* Keep this question page aligned with the hub's shared design system. */
+.question-page .article-card h2 { margin: 0 0 14px; }
+.question-page .article-card h3 { margin: 22px 0 8px; font-size: 16px; }
+.question-page .article-card p { line-height: 1.75; }
+.question-page .article-card ol { padding-left: 26px; }
+.question-page .article-card li { margin: 9px 0; }
+.question-page .equation { margin: 14px 0; }
+.question-page .solution-table-wrap { overflow-x: auto; }
+.question-page table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+.question-page th, .question-page td { padding: 11px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+.question-page th { background: #f6f7fb; font-weight: 700; }
+.question-page .quiz-options { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin: 15px 0; }
+.question-page .quiz-options button { padding: 11px 14px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: var(--ink); cursor: pointer; }
+.question-page .quiz-options button:hover { border-color: var(--accent); background: var(--soft); }
+.question-page #quiz-feedback { min-height: 24px; font-weight: 600; }
+.question-page #quiz-feedback[data-state="correct"] { color: var(--green); }
+.question-page #quiz-feedback[data-state="incorrect"] { color: #b45309; }
+.question-page .revision-label { display: flex; align-items: center; gap: 9px; font-size: 13px; }
+.question-page .revision-label input { width: 17px; height: 17px; }
+@media(max-width:560px) { .question-page .quiz-options { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+</style>
 <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -15,7 +37,7 @@
     <p>Topic: PCA · Principal directions and dimensionality reduction</p>
   </header>
 
-  <section class="panel">
+  <section class="article-card">
     <h2>Question</h2>
     <p>Consider the dataset of four points, all of which lie on a line:</p>
     \[
@@ -97,7 +119,7 @@
       <li>The representative vector is shared across all points; each point gets its own coefficient.</li>
       <li>Because \(w\) is unit length, the coefficient is the signed distance along the line from the origin.</li>
     </ul>
-    <label><input type="checkbox" id="revised"> Mark this question as revised on this device</label>
+    <label class="revision-label"><input type="checkbox" id="revised"> Mark this question as revised on this device</label>
   </section>
 </main>
 <script>
