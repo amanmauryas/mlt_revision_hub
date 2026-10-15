@@ -1,5 +1,5 @@
 [
-  {"week":1,"weekTitle":"PCA — Principal Component Analysis","topics":["PCA","Covariance matrix","Principal directions","Projected variance","Eigenvalues and eigenvectors","SVD connection"]},
+  {"week":1,"weekTitle":"PCA — Principal Component Analysis","topics":["PCA","Covariance matrix","Principal directions","Projected variance","Eigenvalues and eigenvectors","SVD connection","Dimensionality reduction"]},
   {"week":2,"weekTitle":"Kernel PCA","topics":["Kernel idea","Nonlinear feature mapping","Kernel trick","Kernel PCA vs PCA"]},
   {"week":3,"weekTitle":"K-Means and Kernel K-Means","topics":["K-means objective","Assignment and update steps","Convergence and limitations","Kernel K-means"]},
   {"week":4,"weekTitle":"MLE, Bayesian Methods, GMM and EM","topics":["Maximum likelihood estimation","Bayesian methods","Gaussian mixture models","Expectation-maximization"]},
