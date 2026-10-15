@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compressing Collinear Data in R³ · MLT Revision Hub</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+.viz-shell{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fbfcff}
+.viz-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:#fff}
+.viz-head strong{font-size:13px}.viz-head span{font-size:11px;color:var(--muted)}
+.viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.viz-pane{padding:15px;min-width:0}.viz-pane+ .viz-pane{border-left:1px solid var(--line)}
+.viz-pane h3{font-size:14px;margin:0 0 3px}.viz-pane p{font-size:11px;color:var(--muted);margin:0 0 8px}
+.viz-pane svg{width:100%;height:auto;display:block;overflow:visible}
+.viz-legend{display:flex;gap:12px;flex-wrap:wrap;padding:0 15px 15px;font-size:11px;color:var(--muted)}
+.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#635bdb;margin-right:5px}
+.legend-dot.hot{background:#ea580c}.viz-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:14px 0}.viz-controls label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}.viz-controls input[type=range]{width:min(260px,48vw);accent-color:var(--accent)}
+.stat-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}
+.stat-tile{border:1px solid var(--line);border-radius:11px;padding:13px;background:#fff}.stat-tile span{display:block;font-size:11px;color:var(--muted)}.stat-tile strong{display:block;font-size:22px;letter-spacing:-.04em;margin-top:3px}.stat-tile.emphasis{background:#f0efff;border-color:#d8d5ff}
+.storage-row{display:grid;grid-template-columns:94px 1fr 54px;gap:10px;align-items:center;margin:12px 0;font-size:12px}.storage-track{height:14px;border-radius:5px;background:#eceef5;overflow:hidden}.storage-fill{height:100%;border-radius:5px;transition:width .5s ease}.storage-fill.full{background:#929bb1;width:100%}.storage-fill.compact{background:#635bdb;width:34.3333%}
+.viz-note{border-radius:10px;background:#f0efff;padding:12px 14px;font-size:12px;color:#39336f;margin-top:14px}
+@media(max-width:650px){.viz-grid{grid-template-columns:1fr}.viz-pane+.viz-pane{border-left:0;border-top:1px solid var(--line)}.stat-strip{grid-template-columns:1fr 1fr}.stat-tile:last-child{grid-column:1/-1}.viz-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="../"><span class="brand-mark">∑</span><span>MLT <span class="muted">Revision Hub</span></span></a><a class="header-link" href="../">← All weeks</a></header>
+<main class="container question-page">
+<div class="breadcrumb"><a href="../">Revision Hub</a> / Week 1 / Dimensionality reduction</div>
+<section class="question-hero"><p class="eyebrow">AQ · ACTIVITY QUESTION · WEEK 1</p><h1>Compressing points that lie on a line</h1><p>How much storage do we save when 100 points in three dimensions all lie on a single line through the origin?</p><div class="tag-row"><span class="tag">PCA intuition</span><span class="tag">Dimensionality reduction</span><span class="tag">Storage calculation</span></div></section>
+<section class="article-card"><h2>Question</h2><p>Consider a dataset that has <strong>100 points</strong> that belong to \(\mathbb{R}^3\). All of them are found to lie on a line that passes through the origin. We use a <strong>unit vector along the line</strong> as a representative and the coefficients with respect to it to represent the individual data-points. Compute the percentage decrease in the size of the dataset if we move to this new representation. Assume that it takes one unit of space to store one feature. Enter your answer correct to two decimal places; it should be in the range \([0,100]\).</p><button class="button" id="hint-button">Show hint</button><div id="hint" class="reveal"><p><strong>Hint 1:</strong> how many numbers are needed to store 100 points in \(\mathbb{R}^3\)?</p><p><strong>Hint 2:</strong> the direction vector is stored once, and each point needs one scalar coefficient.</p></div></section>
+<section class="article-card"><h2>See the representation change</h2><p>Every point lies on the same line through the origin. Instead of storing three coordinates per point, store the shared direction once and one coefficient per point.</p>
+<div class="viz-shell">
+<div class="viz-head"><strong>From 3D coordinates to 1D coefficients</strong><span>Illustrative points · not to scale</span></div>
+<div class="viz-grid">
+<div class="viz-pane"><h3>Original dataset · \(\mathbb{R}^3\)</h3><p>100 points, each stored with 3 coordinates</p><svg id="space-svg" viewBox="0 0 360 255" role="img" aria-label="Three-dimensional axes with points on a line through the origin"><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#8992a5"/></marker></defs><line x1="42" y1="210" x2="320" y2="210" stroke="#a4adbd" stroke-width="1.4" marker-end="url(#arrow)"/><line x1="42" y1="210" x2="42" y2="22" stroke="#a4adbd" stroke-width="1.4" marker-end="url(#arrow)"/><line x1="42" y1="210" x2="143" y2="145" stroke="#a4adbd" stroke-width="1.4" marker-end="url(#arrow)"/><text x="326" y="216" font-size="11" fill="#68738a">x₁</text><text x="31" y="17" font-size="11" fill="#68738a">x₂</text><text x="147" y="142" font-size="11" fill="#68738a">x₃</text><circle cx="42" cy="210" r="3" fill="#172033"/><text x="27" y="230" font-size="10" fill="#68738a">origin</text><line id="data-line" x1="57" y1="200" x2="300" y2="65" stroke="#a5a0f0" stroke-width="2.5" stroke-linecap="round"/><g id="data-points"></g><text x="184" y="47" font-size="11" fill="#635bdb">xᵢ = αᵢu</text></svg></div>
+<div class="viz-pane"><h3>Compact representation · 1D</h3><p>Store shared unit vector u once + one coefficient αᵢ per point</p><svg id="coeff-svg" viewBox="0 0 360 255" role="img" aria-label="One-dimensional coefficient axis with the selected point highlighted"><line x1="25" y1="130" x2="333" y2="130" stroke="#a4adbd" stroke-width="1.5"/><path d="M25 130 l8 -4 v8 z M333 130 l-8 -4 v8 z" fill="#a4adbd"/><text x="20" y="151" font-size="10" fill="#68738a">−α</text><text x="321" y="151" font-size="10" fill="#68738a">+α</text><line x1="180" y1="116" x2="180" y2="145" stroke="#8992a5" stroke-width="1.5"/><text x="173" y="164" font-size="10" fill="#68738a">0</text><g id="coeff-points"></g><line id="coeff-marker" x1="180" y1="83" x2="180" y2="120" stroke="#ea580c" stroke-width="2"/><circle id="coeff-selected" cx="180" cy="130" r="7" fill="#ea580c" stroke="#fff" stroke-width="2"/><text id="coeff-label" x="180" y="69" text-anchor="middle" font-size="12" font-weight="700" fill="#c2410c">α₅₀ = 0.00</text><text x="180" y="207" text-anchor="middle" font-size="11" fill="#68738a">one scalar per data point</text><text x="180" y="225" text-anchor="middle" font-size="10" fill="#68738a">plus 3 shared numbers for u</text></svg></div>
+</div><div class="viz-legend"><span><i class="legend-dot"></i>Other data points</span><span><i class="legend-dot hot"></i>Selected point / coefficient</span><span>Use the slider to inspect a point and its coefficient.</span></div>
+</div>
+<div class="viz-controls"><label for="point-slider">Selected point <input id="point-slider" type="range" min="1" max="100" value="50"><strong id="point-label">50 / 100</strong></label><button class="button" id="animate-button">▶ Animate encoding</button><span id="animation-status" class="notice">Ready to encode</span></div>
+<div class="stat-strip"><div class="stat-tile"><span>Original storage</span><strong>300 units</strong><span>100 points × 3 features</span></div><div class="stat-tile"><span>New storage</span><strong>103 units</strong><span>3 for u + 100 coefficients</span></div><div class="stat-tile emphasis"><span>Storage decrease</span><strong>65.67%</strong><span>197 units saved</span></div></div>
+<div class="storage-row"><span>Original</span><div class="storage-track"><div class="storage-fill full"></div></div><strong>300</strong></div><div class="storage-row"><span>Compact</span><div class="storage-track"><div class="storage-fill compact"></div></div><strong>103</strong></div>
+<div class="viz-note">Key idea: the 100 points do not each need a separate 3D direction. One shared unit vector describes the line; each point is identified by a single scalar along it.</div>
+</section>
+<section class="article-card"><h2>Step-by-step solution</h2><button class="button" id="solution-button">Reveal solution</button><div id="solution" class="reveal"><ol><li><strong>Original representation:</strong> each of the 100 points has 3 features, so storage is \(100\times3=300\) units.</li><li><strong>New representation:</strong> store the shared unit vector once (3 numbers) and one scalar coefficient for each point (100 numbers). Total \(3+100=103\) units.</li><li><strong>Space saved:</strong> \(300-103=197\) units.</li><li><strong>Percentage decrease:</strong> \(\frac{300-103}{300}\times100=\frac{197}{300}\times100=65.666\ldots\%\).</li></ol><div class="equation">\[\boxed{65.67\%}\]</div></div></section>
+<section class="article-card"><h2>Why not 66.67%?</h2><p>It is tempting to say each point goes from 3 numbers to 1, so storage drops by two-thirds. That ignores the cost of storing the shared direction vector. Since the problem asks for the size of the <em>whole dataset representation</em>, include the 3 numbers used to store the unit vector:</p><div class="equation">\[\text{new size}=100(1)+3=103,\quad\text{not }100.\]</div><p>If the direction vector were already stored elsewhere and explicitly excluded from the storage budget, the answer would instead be 66.67%. Under the stated representation, count it once.</p></section>
+<section class="article-card"><h2>Check your understanding</h2><p>Suppose there are \(N\) points in \(\mathbb{R}^3\), all on one line through the origin. If we store one 3D direction vector and one coefficient per point, what are the original and new storage sizes?</p><div id="quiz-options" class="recall-options"><button class="option" data-answer="a">3N and N + 3</button><button class="option" data-answer="b">3N and 3N + 1</button><button class="option" data-answer="c">N and 3N + 3</button><button class="option" data-answer="d">3N and N</button></div><p id="quiz-feedback" class="feedback">Choose an answer to check yourself.</p><label class="check-row"><input type="checkbox" id="revised"> Mark this question as revised</label><p class="notice">Revision progress is stored in this browser only.</p></section>
+<section class="article-card"><h2>Exam takeaway</h2><ul><li>Original storage: number of points × ambient dimension.</li><li>Reduced storage: shared basis/direction storage + number of coefficients.</li><li>Percentage decrease: \(\frac{\text{old}-\text{new}}{\text{old}}\times100\%\).</li><li>Always check whether the shared representation itself must be counted.</li></ul></section>
+<footer><span>MLT Revision Hub · Week 1</span><a class="text-link" href="../">Back to course weeks ↗</a></footer>
+</main>
+<script>
+(function(){
+const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg";
+const pointsGroup=$("data-points"),coeffGroup=$("coeff-points");
+const alphas=Array.from({length:100},(_,i)=>-0.9+(1.8*i/99));
+function svgEl(name,attrs){const e=document.createElementNS(NS,name);Object.keys(attrs).forEach(k=>e.setAttribute(k,attrs[k]));return e}
+const pointNodes=[],coefficientNodes=[];
+for(let i=0;i<100;i++){
+const t=i/99;
+const x=57+t*243,y=200-t*135;
+const dot=svgEl("circle",{cx:x,cy:y,r: i===49?5:2.6,fill:i===49?"#ea580c":"#635bdb",opacity:i===49?1:.65,stroke:"#fff","stroke-width":i===49?1.5:0});
+dot.appendChild(svgEl("title",{}));dot.firstChild.textContent="Point "+(i+1);pointsGroup.appendChild(dot);pointNodes.push({node:dot,x:x,y:y});
+const cx=35+t*290,cy=130+(i%2===0?-1:1)*((i%5)*1.5);
+const cd=svgEl("circle",{cx:cx,cy:cy,r: i===49?5:2.6,fill:i===49?"#ea580c":"#635bdb",opacity:i===49?1:.58,stroke:"#fff","stroke-width":i===49?1.5:0});
+coeffGroup.appendChild(cd);coefficientNodes.push({node:cd,x:cx,y:cy});
+}
+let selected=50,animating=false,timer=null,phase=0;
+function update(){
+const i=selected-1;const p=pointNodes[i],c=coefficientNodes[i],alpha=alphas[i];
+$("point-label").textContent=selected+" / 100";
+p.node.setAttribute("r","6");p.node.setAttribute("fill","#ea580c");p.node.setAttribute("opacity","1");
+pointNodes.forEach((o,j)=>{if(j!==i){o.node.setAttribute("r","2.6");o.node.setAttribute("fill","#635bdb");o.node.setAttribute("opacity",".65")}});
+c.node.setAttribute("r","6");c.node.setAttribute("fill","#ea580c");c.node.setAttribute("opacity","1");
+coefficientNodes.forEach((o,j)=>{if(j!==i){o.node.setAttribute("r","2.6");o.node.setAttribute("fill","#635bdb");o.node.setAttribute("opacity",".58")}});
+$("coeff-marker").setAttribute("x1",c.x);$("coeff-marker").setAttribute("x2",c.x);$("coeff-selected").setAttribute("cx",c.x);
+$("coeff-label").setAttribute("x",c.x);$("coeff-label").textContent="α"+String.fromCharCode(7522)+" = "+alpha.toFixed(2);
+}
+$("point-slider").addEventListener("input",e=>{selected=Number(e.target.value);update()});
+$("animate-button").addEventListener("click",()=>{
+if(animating){animating=false;clearInterval(timer);timer=null;$("animate-button").textContent="▶ Animate encoding";$("animation-status").textContent="Animation paused";return}
+animating=true;phase=0;$("animate-button").textContent="Ⅱ Pause animation";$("animation-status").textContent="Encoding points into scalar coefficients…";
+timer=setInterval(()=>{phase++;selected=(phase%100)+1;$("point-slider").value=selected;update();if(phase>=100){animating=false;clearInterval(timer);timer=null;$("animate-button").textContent="▶ Replay animation";$("animation-status").textContent="Encoding complete: one coefficient per point"}},65);
+});
+$("hint-button").addEventListener("click",()=>$("hint").classList.toggle("visible"));
+$("solution-button").addEventListener("click",()=>{$("solution").classList.toggle("visible");if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise()});
+$("quiz-options").addEventListener("click",e=>{const b=e.target.closest("[data-answer]");if(!b)return;$("quiz-options").querySelectorAll("button").forEach(x=>x.classList.toggle("selected",x===b));const ok=b.dataset.answer==="a";$("quiz-feedback").textContent=ok?"Correct. N points use 3N coordinates originally; the compressed representation stores N coefficients plus the shared 3D unit vector.":"Not quite. Count 3 coordinates for each original point, then count N scalar coefficients and the one shared vector (3 numbers).";$("quiz-feedback").className="feedback "+(ok?"correct":"incorrect")});
+const key="mlt-revision-hub-progress-v1";let progress={};try{progress=JSON.parse(localStorage.getItem(key)||"{}")}catch(e){}
+$("revised").checked=!!progress["line-data-compression"];
+$("revised").addEventListener("change",()=>{if($("revised").checked)progress["line-data-compression"]=true;else delete progress["line-data-compression"];try{localStorage.setItem(key,JSON.stringify(progress))}catch(e){}});
+update();
+})();
+</script>
+</body></html>
