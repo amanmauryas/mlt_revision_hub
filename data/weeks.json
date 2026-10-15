@@ -1,0 +1,14 @@
+[
+  {"week":1,"weekTitle":"PCA — Principal Component Analysis","topics":["PCA","Covariance matrix","Principal directions","Projected variance","Eigenvalues and eigenvectors","SVD connection"]},
+  {"week":2,"weekTitle":"Kernel PCA","topics":["Kernel idea","Nonlinear feature mapping","Kernel trick","Kernel PCA vs PCA"]},
+  {"week":3,"weekTitle":"K-Means and Kernel K-Means","topics":["K-means objective","Assignment and update steps","Convergence and limitations","Kernel K-means"]},
+  {"week":4,"weekTitle":"MLE, Bayesian Methods, GMM and EM","topics":["Maximum likelihood estimation","Bayesian methods","Gaussian mixture models","Expectation-maximization"]},
+  {"week":5,"weekTitle":"Least Squares and Regression","topics":["Least squares","Linear regression","Bayesian regression"]},
+  {"week":6,"weekTitle":"Regularization","topics":["Ridge regression","LASSO","Bias-variance trade-off"]},
+  {"week":7,"weekTitle":"KNN and Decision Trees","topics":["K-nearest neighbours","Decision trees","Splitting criteria"]},
+  {"week":8,"weekTitle":"Naive Bayes","topics":["Bayes theorem","Conditional independence","Naive Bayes classifier"]},
+  {"week":9,"weekTitle":"Perceptron and Logistic Regression","topics":["Perceptron","Logistic regression","Decision boundaries"]},
+  {"week":10,"weekTitle":"Support Vector Machines","topics":["Maximum-margin classifier","Support vectors","Kernel SVM"]},
+  {"week":11,"weekTitle":"Ensemble Learning","topics":["Bagging","Boosting","AdaBoost"]},
+  {"week":12,"weekTitle":"Neural Networks and Multiclass Classification","topics":["Artificial neural networks","Multiclass classification","Output strategies"]}
+]
