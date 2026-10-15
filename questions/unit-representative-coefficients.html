@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit Representative and Point Coefficients · MLT Revision Hub</title>
+<link rel="stylesheet" href="../assets/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<main class="page-shell">
+  <p><a href="../index.html">← Back to MLT Revision Hub</a></p>
+  <header class="page-header">
+    <p class="eyebrow">PA · PRACTICE ASSIGNMENT · WEEK 1</p>
+    <h1>Finding a unit-length representative</h1>
+    <p>Topic: PCA · Principal directions and dimensionality reduction</p>
+  </header>
+
+  <section class="panel">
+    <h2>Question</h2>
+    <p>Consider the dataset of four points, all of which lie on a line:</p>
+    \[
+    S=\left\{
+    \begin{bmatrix}0\\0\end{bmatrix},
+    \begin{bmatrix}3\\4\end{bmatrix},
+    \begin{bmatrix}6\\8\end{bmatrix},
+    \begin{bmatrix}1/5\\4/15\end{bmatrix}
+    \right\}.
+    \]
+    <p>Among the following vectors, choose a representative that has unit length.</p>
+    <ol type="A">
+      <li>\(\begin{bmatrix}3\\4\end{bmatrix}\)</li>
+      <li>\(\begin{bmatrix}1/15\\4/15\end{bmatrix}\)</li>
+      <li>\(\begin{bmatrix}3/5\\4/5\end{bmatrix}\)</li>
+      <li>\(\begin{bmatrix}1\\1\end{bmatrix}\)</li>
+    </ol>
+    <details><summary>Hint</summary><p>Normalize the direction vector by dividing it by its Euclidean length. A unit vector must have norm 1.</p></details>
+  </section>
+
+  <section class="panel">
+    <h2>Solution</h2>
+    <p><strong>Correct answer: C, \(w=\begin{bmatrix}3/5\\4/5\end{bmatrix}\).</strong></p>
+    <p>The point \(\begin{bmatrix}3\\4\end{bmatrix}\) indicates the direction of the line, but it is not unit length:</p>
+    \[
+    \left\|\begin{bmatrix}3\\4\end{bmatrix}\right\|
+    =\sqrt{3^2+4^2}=5.
+    \]
+    <p>Divide by 5 to obtain the unit representative:</p>
+    \[
+    w=\frac{1}{5}\begin{bmatrix}3\\4\end{bmatrix}
+    =\begin{bmatrix}3/5\\4/5\end{bmatrix},
+    \qquad \|w\|=1.
+    \]
+
+    <h3>How does the last point get represented?</h3>
+    <p>Every point on this line can be written as \(x=cw\), where \(c\) is a scalar coefficient. For the last point, solve</p>
+    \[
+    \begin{bmatrix}1/5\\4/15\end{bmatrix}
+    =c\begin{bmatrix}3/5\\4/5\end{bmatrix}.
+    \]
+    <p>Comparing first coordinates gives \(c(3/5)=1/5\), so \(c=1/3\). Checking the second coordinate confirms it:</p>
+    \[
+    \frac13\cdot\frac45=\frac4{15}.
+    \]
+    <p>Thus the last point is not a new representative vector. It is one-third of the same unit vector:</p>
+    \[
+    \boxed{\begin{bmatrix}1/5\\4/15\end{bmatrix}=\frac13w}.
+    \]
+
+    <h3>Coefficients for all four points</h3>
+    <table>
+      <thead><tr><th>Point \(x\)</th><th>Coefficient \(c\) in \(x=cw\)</th></tr></thead>
+      <tbody>
+        <tr><td>\(\begin{bmatrix}0\\0\end{bmatrix}\)</td><td>\(0\)</td></tr>
+        <tr><td>\(\begin{bmatrix}3\\4\end{bmatrix}\)</td><td>\(5\)</td></tr>
+        <tr><td>\(\begin{bmatrix}6\\8\end{bmatrix}\)</td><td>\(10\)</td></tr>
+        <tr><td>\(\begin{bmatrix}1/5\\4/15\end{bmatrix}\)</td><td>\(1/3\)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>Try it yourself</h2>
+    <p>With the same unit representative \(w=\begin{bmatrix}3/5\\4/5\end{bmatrix}\), what coefficient represents \(x=\begin{bmatrix}6\\8\end{bmatrix}\)?</p>
+    <div class="quiz-options" id="quiz-options">
+      <button type="button" data-answer="2">2</button>
+      <button type="button" data-answer="5">5</button>
+      <button type="button" data-answer="10">10</button>
+      <button type="button" data-answer="14">14</button>
+    </div>
+    <p id="quiz-feedback" aria-live="polite"></p>
+  </section>
+
+  <section class="panel">
+    <h2>Exam traps</h2>
+    <ul>
+      <li>\([3,4]^T\) gives the correct direction but has length 5, not 1.</li>
+      <li>The representative vector is shared across all points; each point gets its own coefficient.</li>
+      <li>Because \(w\) is unit length, the coefficient is the signed distance along the line from the origin.</li>
+    </ul>
+    <label><input type="checkbox" id="revised"> Mark this question as revised on this device</label>
+  </section>
+</main>
+<script>
+document.querySelectorAll('#quiz-options button').forEach(button => {
+  button.addEventListener('click', () => {
+    const feedback = document.getElementById('quiz-feedback');
+    if (button.dataset.answer === '10') {
+      feedback.textContent = 'Correct: 10 × [3/5, 4/5]ᵀ = [6, 8]ᵀ.';
+      feedback.dataset.state = 'correct';
+    } else {
+      feedback.textContent = 'Not quite. Find c such that c(3/5) = 6.';
+      feedback.dataset.state = 'incorrect';
+    }
+  });
+});
+const revised = document.getElementById('revised');
+const key = 'mlt-revised-unit-representative';
+revised.checked = localStorage.getItem(key) === 'true';
+revised.addEventListener('change', () => localStorage.setItem(key, String(revised.checked)));
+</script>
+</body>
+</html>
