@@ -54,20 +54,51 @@
     "weekTitle": "PCA — Principal Component Analysis"
   },
   {
-    "id": "projection-proxies-error",
-    "title": "Projection, proxies and reconstruction error",
+    "id": "projection-error-vector-q5",
+    "title": "PA Q5 — Identify the reconstruction error vector",
     "topic": "Principal directions",
     "difficulty": "Foundational",
-    "summary": "Interactive 2D visualization for Practice Assignment questions 5–7: move a proxy along a line, compare residuals, and identify the orthogonal projection that minimizes reconstruction error.",
+    "summary": "Identify the direction and formula of the reconstruction error vector when Q approximates P.",
     "tags": [
       "PCA",
       "projection",
-      "residual",
-      "reconstruction error",
-      "orthogonality",
+      "error vector",
+      "residual"
+    ],
+    "url": "questions/projection-proxies-error.html#q5",
+    "category": "PA",
+    "week": 1,
+    "weekTitle": "PCA — Principal Component Analysis"
+  },
+  {
+    "id": "best-proxy-projection-q6",
+    "title": "PA Q6 — Find the best proxy on a line",
+    "topic": "Principal directions",
+    "difficulty": "Foundational",
+    "summary": "Determine why the orthogonal projection Q′ is the point on the line that minimizes reconstruction error.",
+    "tags": [
+      "PCA",
+      "orthogonal projection",
       "principal directions"
     ],
-    "url": "questions/projection-proxies-error.html",
+    "url": "questions/projection-proxies-error.html#q6",
+    "category": "PA",
+    "week": 1,
+    "weekTitle": "PCA — Principal Component Analysis"
+  },
+  {
+    "id": "compare-reconstruction-errors-q7",
+    "title": "PA Q7 — Compare reconstruction errors",
+    "topic": "Principal directions",
+    "difficulty": "Foundational",
+    "summary": "Compare distances from P to a chosen proxy Q and the optimal projection Q′; select the guaranteed statements.",
+    "tags": [
+      "PCA",
+      "reconstruction error",
+      "distance",
+      "projection"
+    ],
+    "url": "questions/projection-proxies-error.html#q7",
     "category": "PA",
     "week": 1,
     "weekTitle": "PCA — Principal Component Analysis"
