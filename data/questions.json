@@ -52,5 +52,24 @@
     "category": "PA",
     "week": 1,
     "weekTitle": "PCA — Principal Component Analysis"
+  },
+  {
+    "id": "projection-proxies-error",
+    "title": "Projection, proxies and reconstruction error",
+    "topic": "Principal directions",
+    "difficulty": "Foundational",
+    "summary": "Interactive 2D visualization for Practice Assignment questions 5–7: move a proxy along a line, compare residuals, and identify the orthogonal projection that minimizes reconstruction error.",
+    "tags": [
+      "PCA",
+      "projection",
+      "residual",
+      "reconstruction error",
+      "orthogonality",
+      "principal directions"
+    ],
+    "url": "questions/projection-proxies-error.html",
+    "category": "PA",
+    "week": 1,
+    "weekTitle": "PCA — Principal Component Analysis"
   }
 ]
